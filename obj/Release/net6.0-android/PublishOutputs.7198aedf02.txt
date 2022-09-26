@@ -1,0 +1,3 @@
+E:\Projects\Personal\AlarmApp\bin\Release\net6.0-android\publish\com.companyname.AlarmApp-Signed.aab
+E:\Projects\Personal\AlarmApp\bin\Release\net6.0-android\publish\com.companyname.AlarmApp.aab
+E:\Projects\Personal\AlarmApp\bin\Release\net6.0-android\publish\com.companyname.AlarmApp-Signed.apk

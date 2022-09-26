@@ -1,0 +1,79 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFrameworks>net6.0-android;net6.0-ios</TargetFrameworks>
+    	<OutputType>Exe</OutputType>
+		<UseMaui>true</UseMaui>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<SingleProject>true</SingleProject>
+		<RootNamespace>AlarmApp</RootNamespace>
+
+		<!-- Display name -->
+		<ApplicationTitle>AlarmApp</ApplicationTitle>
+
+		<!-- App Identifier -->
+		<ApplicationId>com.companyname.AlarmApp</ApplicationId>
+		<ApplicationIdGuid>64FF221C-3EE2-41EF-AE15-E0431C5032AC</ApplicationIdGuid>
+		<!-- Versions -->
+		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
+		<ApplicationVersion>1</ApplicationVersion>
+
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">14.2</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
+	</PropertyGroup>
+	<ItemGroup>
+		<!-- App Icon -->
+		<MauiImage Include="Resources\appicon.svg" IsAppIcon="true" ForegroundFile="Resources\splashscreen.svg" Color="#FFFFFF" />
+
+		<!-- Splash Screen -->
+		<MauiSplashScreen Include="Resources\splashscreen.svg" Color="#5B27D9" />
+
+		<!-- Images -->
+		<MauiImage Include="Resources\Images\*" />
+
+		<!-- Custom Fonts -->
+		<MauiFont Include="Resources\Fonts\*" />
+	</ItemGroup>
+
+
+	<ItemGroup>
+		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.0.0" />
+		<PackageReference Include="DevExpress.Maui.Charts" Version="22.1.5" />
+		<PackageReference Include="DevExpress.Maui.CollectionView" Version="22.1.5" />
+		<PackageReference Include="DevExpress.Maui.Editors" Version="22.1.5" />
+		<PackageReference Include="DevExpress.Maui.Core" Version="22.1.5" />
+		<PackageReference Include="DevExpress.Maui.DataGrid" Version="22.1.5" />
+		<PackageReference Include="DevExpress.Maui.Scheduler" Version="22.1.5" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+	</ItemGroup>
+
+
+	<ItemGroup>
+	  <MauiXaml Update="AppShell.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="View\HomePage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="View\MyRoutines.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="View\MyTasks.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	</ItemGroup>
+	<PropertyGroup>
+		<UseInterpreter Condition="$(TargetFramework.Contains('-ios'))">True</UseInterpreter>	
+		<UseInterpreter Condition="$(TargetFramework.Contains('-android'))">False</UseInterpreter>
+		<RuntimeIdentifiers Condition="$(TargetFramework.Contains('-android'))">android-arm;android-arm64;android-x86;android-x64</RuntimeIdentifiers>
+</PropertyGroup>
+
+<PropertyGroup Condition="$(TargetFramework.Contains('-android')) and '$(Configuration)' == 'Release'">
+	<AndroindKeyStore>True</AndroindKeyStore>
+	<AndroidSigningKeyStore>..\key.keystore</AndroidSigningKeyStore>
+	<AndroidSigningStorePass>NEVERMIND308/.</AndroidSigningStorePass>
+	<AndroidSigningStorePass>MauiAlias</AndroidSigningStorePass>
+	<AndroidSigningStorePass>NEVERMIND308/.</AndroidSigningStorePass>
+</PropertyGroup>
+	
+</Project>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AlarmApp.View.MyTasks"
+             xmlns:dxco="clr-namespace:DevExpress.Maui.Controls;assembly=DevExpress.Maui.Controls"
+             xmlns:dxe="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Editors"
+             xmlns:viewmodel="clr-namespace:AlarmApp.ViewModel"
+             x:DataType="viewmodel:TaskViewModel"
+             xmlns:model="clr-namespace:AlarmApp.Model"
+             Title="{Binding Title}">
+    <VerticalStackLayout>
+        <Button Clicked="OpenPopup" WidthRequest="200" Margin="10" Text="Add Task"/>
+        <ScrollView>
+            <RefreshView Command="{Binding RefreshCommand}" 
+                         IsRefreshing="{Binding IsRefreshing}">
+                <CollectionView ItemsSource="{Binding Tasks}" 
+                                    SelectionMode="None">
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Orientation="Vertical" 
+                                             Span="{OnIdiom Desktop=2, Default=1}"/>
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="model:MorningTask">
+                            <VerticalStackLayout HorizontalOptions="Center" BackgroundColor="AliceBlue" WidthRequest="300" Spacing="10" Padding="10" Margin="10">
+                                <HorizontalStackLayout HorizontalOptions="Center">
+                                    <Label Text="Task: " TextColor="Grey"/>
+                                    <Label Text="{Binding Name}" TextColor="Grey"/>
+                                </HorizontalStackLayout>
+                                <HorizontalStackLayout HorizontalOptions="Center">
+                                    <Label Text="Time: " TextColor="Grey"/>
+                                    <Label Text="{Binding TimeString}" TextColor="Grey"/>
+                                </HorizontalStackLayout>
+                                <HorizontalStackLayout Spacing="50" HorizontalOptions="Center">
+                                    <Label Text="remove" TextColor="Red">
+                                        <Label.GestureRecognizers>
+                                            <TapGestureRecognizer NumberOfTapsRequired="1"
+                                                                      CommandParameter ="{Binding .}"
+                                                                      Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:TaskViewModel}}, Path=RemoveTaskCommand}"/>
+                                        </Label.GestureRecognizers>
+                                    </Label>
+                                    <Label Text="edit" TextColor="Orange">
+                                        <Label.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="OpenPopup" 
+                                                                      CommandParameter="{Binding .}" 
+                                                                      Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:TaskViewModel}}, Path=EditButtonClickedCommand}"/>
+                                        </Label.GestureRecognizers>
+                                    </Label>
+                                </HorizontalStackLayout>
+                            </VerticalStackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </RefreshView>
+        </ScrollView>
+
+        <dxco:DXPopup x:Name="addTaskPopup" Closed="OnClosed">
+            <VerticalStackLayout Style="{StaticResource PopupContent}" WidthRequest="350" BackgroundColor="AliceBlue" Padding="5, 5" Spacing="10">
+                <Label Text="Add Task" Style="{StaticResource PopupTitle}"/>
+                <dxe:TextEdit LabelText="task name" Style="{StaticResource PopupTextEdit}" Text="{Binding TaskName, Mode=TwoWay}"></dxe:TextEdit>
+                <dxe:TextEdit LabelText="time" Style="{StaticResource PopupTextEdit}" Text="{Binding TimeString, Mode=TwoWay}"></dxe:TextEdit>
+                <Button Text="{Binding PopupButtonText}"
+                            Clicked="ClosePopup" 
+                            WidthRequest="200" 
+                            Margin="10" 
+                            Command="{Binding PopupButtonClickedCommand}"/>
+            </VerticalStackLayout>
+        </dxco:DXPopup>
+    </VerticalStackLayout>
+</ContentPage>

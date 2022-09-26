@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AlarmApp.AppShell"
+             xmlns:view="clr-namespace:AlarmApp.View"
+             FlyoutBehavior="Disabled">
+
+    <TabBar>
+        <Tab Title="Calculate">
+            <ShellContent ContentTemplate="{DataTemplate view:HomePage}" />
+        </Tab>
+        <Tab Title="My Tasks">
+            <ShellContent ContentTemplate="{DataTemplate view:MyTasks}" />
+        </Tab>
+        <Tab Title="My Routines">
+            <ShellContent ContentTemplate="{DataTemplate view:MyRoutines}" />
+        </Tab>
+    </TabBar>
+    
+    
+    <!--<ShellContent
+        Title="Calculate"
+        ContentTemplate="{DataTemplate view:HomePage}"
+        Route="MainPage" />-->
+
+    <!--<FlyoutItem Title="My Tasks">
+        <Tab>
+            <ShellContent ContentTemplate="{DataTemplate view:MyTasks}" />
+        </Tab>
+    </FlyoutItem>
+
+    <FlyoutItem Title="My Routines">
+        <Tab>
+            <ShellContent ContentTemplate="{DataTemplate view:MyRoutines}" />
+        </Tab>
+    </FlyoutItem>-->
+</Shell>

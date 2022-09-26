@@ -1,0 +1,43 @@
+﻿<Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:windows="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.WindowsSpecific;assembly=Microsoft.Maui.Controls"
+             xmlns:local="clr-namespace:AlarmApp"
+             xmlns:dxe="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Editors"
+             x:Class="AlarmApp.App"
+             windows:Application.ImageDirectory="Assets">
+    <Application.Resources>
+        <ResourceDictionary>
+
+            <Color x:Key="Primary">#512BD4</Color>
+            <Color x:Key="PrimaryLight">#deedff</Color>
+            <Color x:Key="NormalText">#55575c</Color>
+            <Color x:Key="NormalHeaderText">#404144</Color>
+            <Color x:Key="NormalLightText">#959aa0</Color>
+            <Color x:Key="DrawerTitleTextColor">White</Color>
+            <Style TargetType="NavigationPage">
+                <Setter Property="BarBackgroundColor" Value="{StaticResource Primary}"/>
+                <Setter Property="BarTextColor" Value="{StaticResource DrawerTitleTextColor}"/>
+            </Style>
+            <Style x:Key="PrimaryButton" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="{StaticResource Primary}"/>
+                <Setter Property="TextColor" Value="White"/>
+            </Style>
+            
+            <!--POPUP-->
+
+            <Style x:Key="PopupTextEdit" TargetType="dxe:TextEdit">
+                <Setter Property="WidthRequest" Value="300"></Setter>
+                <Setter Property="HeightRequest" Value="45"></Setter>
+                <Setter Property="TextFontSize" Value="14"></Setter>
+            </Style>
+
+            <Style x:Key="PopupTitle" TargetType="Label">
+                <Setter Property="FontSize" Value="15"/>
+            </Style>
+
+            <Style x:Key="PopupContent" TargetType="VerticalStackLayout">
+            </Style>
+
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

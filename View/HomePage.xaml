@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AlarmApp.View.HomePage"
+             xmlns:dxe="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Editors"
+             xmlns:viewmodel="clr-namespace:AlarmApp.ViewModel"
+             x:DataType="viewmodel:HomeViewModel"
+             Title="{Binding Title}">
+    <VerticalStackLayout WidthRequest="300" Spacing="20" Margin="100">
+        <dxe:TimeEdit PlaceholderText="time to be at your destination" 
+                      LabelText="time to be at your destination" 
+                      Time="{Binding TimeToBeAt, Mode=TwoWay}" 
+                      TimeFormatMode="HourFormat24"/>
+        <dxe:ComboBoxEdit PlaceholderText="time to be at your destination" 
+                          ItemsSource="{Binding Routines}" 
+                          LabelText="Routine" 
+                          DisplayMember="Name" SelectedValue="{Binding SelectedRoutine, Mode=TwoWay}"/>
+        <Button Text="Calculate" Command="{Binding CalculateCommand}"/>
+    </VerticalStackLayout>
+</ContentPage>

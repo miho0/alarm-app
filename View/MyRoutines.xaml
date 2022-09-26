@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AlarmApp.View.MyRoutines"
+             xmlns:dxco="clr-namespace:DevExpress.Maui.Controls;assembly=DevExpress.Maui.Controls"
+             xmlns:dxe="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Editors"
+             xmlns:viewmodel="clr-namespace:AlarmApp.ViewModel"
+             x:DataType="viewmodel:RoutinesViewModel"
+             xmlns:model="clr-namespace:AlarmApp.Model"
+             Title="{Binding Title}">
+    <VerticalStackLayout>
+        <Button Clicked="OpenPopup" WidthRequest="200" Margin="10" Text="Add New Routine"/>
+        <dxe:ComboBoxEdit WidthRequest="200" HeightRequest="40" DisplayMember="Name" LabelText="select task..."
+                                  ItemsSource="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:RoutinesViewModel}}, Path=Tasks}" 
+                                  SelectedValue="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:RoutinesViewModel}}, Path=Adding, Mode=TwoWay}"/>
+        <ScrollView>
+            <ScrollView.Content>
+                <RefreshView Command="{Binding RefreshCommand}"
+                         IsRefreshing="{Binding IsRefreshing}">
+                    <CollectionView ItemsSource="{Binding Routines}" 
+                                SelectionMode="None">
+                        <CollectionView.ItemsLayout>
+                            <GridItemsLayout Orientation="Vertical" 
+                                         Span="{OnIdiom Desktop=2, Default=1}"/>
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate x:DataType="model:Routine">
+                                <VerticalStackLayout HorizontalOptions="Center" BackgroundColor="AliceBlue" WidthRequest="300" Spacing="10" Padding="10" Margin="10">
+                                    <HorizontalStackLayout HorizontalOptions="Center">
+                                        <Label Text="Routine: " FontSize="20" TextColor="Grey"/>
+                                        <Label Text="{Binding Name}" FontSize="20" TextColor="Grey"/>
+                                    </HorizontalStackLayout>
+                                    <CollectionView ItemsSource="{Binding Tasks}">
+                                        <CollectionView.ItemTemplate>
+                                            <DataTemplate x:DataType="model:MorningTask">
+                                                <VerticalStackLayout>
+                                                    <HorizontalStackLayout Spacing="30" Margin="5">
+                                                        <HorizontalStackLayout>
+                                                            <Label Text="{Binding Name}"/>
+                                                            <Label Text=", "/>
+                                                            <Label Text="{Binding TimeString}"/>
+                                                        </HorizontalStackLayout>
+                                                        <Label Text="remove" TextColor="Red">
+                                                            <Label.GestureRecognizers>
+                                                                <TapGestureRecognizer NumberOfTapsRequired="1"
+                                                                                  CommandParameter="{Binding guid}"
+                                                                                  Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:RoutinesViewModel}}, Path=RemoveTaskCommand}"/>
+                                                            </Label.GestureRecognizers>
+                                                        </Label>
+                                                    </HorizontalStackLayout>
+                                                </VerticalStackLayout>
+                                            </DataTemplate>
+                                        </CollectionView.ItemTemplate>
+                                    </CollectionView>
+                                    <Button WidthRequest="150" HeightRequest="35" FontSize="13" Margin="10" Text="Add selected task" 
+                                            CommandParameter="{Binding .}" 
+                                            Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:RoutinesViewModel}}, Path=AddTaskCommand}"></Button>
+                                    <HorizontalStackLayout HorizontalOptions="Center">
+                                        <Label FontSize="17" Text="Total time: "/>
+                                        <Label FontSize="17" Text="{Binding TotalTimeString}"/>
+                                    </HorizontalStackLayout>
+                                </VerticalStackLayout>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </RefreshView>
+            </ScrollView.Content>
+        </ScrollView>
+        <dxco:DXPopup x:Name="addTaskPopup">
+            <VerticalStackLayout WidthRequest="350" BackgroundColor="AliceBlue" Padding="5, 5" Spacing="10">
+                <Label Style="{StaticResource PopupTitle}" Text="Add new routine"/>
+                <dxe:TextEdit Style="{StaticResource PopupTextEdit}" LabelText="name" Text="{Binding Name, Mode=TwoWay}"/>
+                <Button WidthRequest="200" Margin="10" Text="Add" Command="{Binding AddRoutineCommand}"/>
+            </VerticalStackLayout>
+        </dxco:DXPopup>
+    </VerticalStackLayout>
+</ContentPage>

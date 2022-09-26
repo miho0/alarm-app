@@ -1,0 +1,107 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>AlarmApp</name>
+    </assembly>
+    <members>
+        <member name="P:AlarmApp.ViewModel.BaseViewModel.Title">
+            <inheritdoc cref="F:AlarmApp.ViewModel.BaseViewModel.title"/>
+        </member>
+        <member name="P:AlarmApp.ViewModel.BaseViewModel.IsBusy">
+            <inheritdoc cref="F:AlarmApp.ViewModel.BaseViewModel.isBusy"/>
+        </member>
+        <member name="P:AlarmApp.ViewModel.BaseViewModel.NoTasks">
+            <inheritdoc cref="F:AlarmApp.ViewModel.BaseViewModel.noTasks"/>
+        </member>
+        <member name="P:AlarmApp.ViewModel.BaseViewModel.NoRoutines">
+            <inheritdoc cref="F:AlarmApp.ViewModel.BaseViewModel.noRoutines"/>
+        </member>
+        <member name="P:AlarmApp.ViewModel.HomeViewModel.TimeToBeAt">
+            <inheritdoc cref="F:AlarmApp.ViewModel.HomeViewModel.timeToBeAt"/>
+        </member>
+        <member name="P:AlarmApp.ViewModel.HomeViewModel.SelectedRoutine">
+            <inheritdoc cref="F:AlarmApp.ViewModel.HomeViewModel.selectedRoutine"/>
+        </member>
+        <member name="F:AlarmApp.ViewModel.HomeViewModel.calculateCommand">
+            <summary>The backing field for <see cref="P:AlarmApp.ViewModel.HomeViewModel.CalculateCommand"/>.</summary>
+        </member>
+        <member name="P:AlarmApp.ViewModel.HomeViewModel.CalculateCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:AlarmApp.ViewModel.HomeViewModel.Calculate"/>.</summary>
+        </member>
+        <member name="P:AlarmApp.ViewModel.RoutinesViewModel.Name">
+            <inheritdoc cref="F:AlarmApp.ViewModel.RoutinesViewModel.name"/>
+        </member>
+        <member name="P:AlarmApp.ViewModel.RoutinesViewModel.Adding">
+            <inheritdoc cref="F:AlarmApp.ViewModel.RoutinesViewModel.adding"/>
+        </member>
+        <member name="P:AlarmApp.ViewModel.RoutinesViewModel.IsRefreshing">
+            <inheritdoc cref="F:AlarmApp.ViewModel.RoutinesViewModel.isRefreshing"/>
+        </member>
+        <member name="F:AlarmApp.ViewModel.RoutinesViewModel.addRoutineCommand">
+            <summary>The backing field for <see cref="P:AlarmApp.ViewModel.RoutinesViewModel.AddRoutineCommand"/>.</summary>
+        </member>
+        <member name="P:AlarmApp.ViewModel.RoutinesViewModel.AddRoutineCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:AlarmApp.ViewModel.RoutinesViewModel.AddRoutine"/>.</summary>
+        </member>
+        <member name="F:AlarmApp.ViewModel.RoutinesViewModel.addTaskCommand">
+            <summary>The backing field for <see cref="P:AlarmApp.ViewModel.RoutinesViewModel.AddTaskCommand"/>.</summary>
+        </member>
+        <member name="P:AlarmApp.ViewModel.RoutinesViewModel.AddTaskCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand`1"/> instance wrapping <see cref="M:AlarmApp.ViewModel.RoutinesViewModel.AddTask(AlarmApp.Model.Routine)"/>.</summary>
+        </member>
+        <member name="F:AlarmApp.ViewModel.RoutinesViewModel.removeTaskCommand">
+            <summary>The backing field for <see cref="P:AlarmApp.ViewModel.RoutinesViewModel.RemoveTaskCommand"/>.</summary>
+        </member>
+        <member name="P:AlarmApp.ViewModel.RoutinesViewModel.RemoveTaskCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand`1"/> instance wrapping <see cref="M:AlarmApp.ViewModel.RoutinesViewModel.RemoveTask(System.Guid)"/>.</summary>
+        </member>
+        <member name="F:AlarmApp.ViewModel.RoutinesViewModel.refreshCommand">
+            <summary>The backing field for <see cref="P:AlarmApp.ViewModel.RoutinesViewModel.RefreshCommand"/>.</summary>
+        </member>
+        <member name="P:AlarmApp.ViewModel.RoutinesViewModel.RefreshCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:AlarmApp.ViewModel.RoutinesViewModel.Refresh"/>.</summary>
+        </member>
+        <member name="P:AlarmApp.ViewModel.TaskViewModel.TaskName">
+            <inheritdoc cref="F:AlarmApp.ViewModel.TaskViewModel.taskName"/>
+        </member>
+        <member name="P:AlarmApp.ViewModel.TaskViewModel.TimeString">
+            <inheritdoc cref="F:AlarmApp.ViewModel.TaskViewModel.timeString"/>
+        </member>
+        <member name="P:AlarmApp.ViewModel.TaskViewModel.PopupButtonText">
+            <inheritdoc cref="F:AlarmApp.ViewModel.TaskViewModel.popupButtonText"/>
+        </member>
+        <member name="P:AlarmApp.ViewModel.TaskViewModel.IsEditing">
+            <inheritdoc cref="F:AlarmApp.ViewModel.TaskViewModel.isEditing"/>
+        </member>
+        <member name="P:AlarmApp.ViewModel.TaskViewModel.IsRefreshing">
+            <inheritdoc cref="F:AlarmApp.ViewModel.TaskViewModel.isRefreshing"/>
+        </member>
+        <member name="P:AlarmApp.ViewModel.TaskViewModel.Editing">
+            <inheritdoc cref="F:AlarmApp.ViewModel.TaskViewModel.editing"/>
+        </member>
+        <member name="F:AlarmApp.ViewModel.TaskViewModel.popupButtonClickedCommand">
+            <summary>The backing field for <see cref="P:AlarmApp.ViewModel.TaskViewModel.PopupButtonClickedCommand"/>.</summary>
+        </member>
+        <member name="P:AlarmApp.ViewModel.TaskViewModel.PopupButtonClickedCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:AlarmApp.ViewModel.TaskViewModel.PopupButtonClicked"/>.</summary>
+        </member>
+        <member name="F:AlarmApp.ViewModel.TaskViewModel.removeTaskCommand">
+            <summary>The backing field for <see cref="P:AlarmApp.ViewModel.TaskViewModel.RemoveTaskCommand"/>.</summary>
+        </member>
+        <member name="P:AlarmApp.ViewModel.TaskViewModel.RemoveTaskCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand`1"/> instance wrapping <see cref="M:AlarmApp.ViewModel.TaskViewModel.RemoveTask(AlarmApp.Model.MorningTask)"/>.</summary>
+        </member>
+        <member name="F:AlarmApp.ViewModel.TaskViewModel.editButtonClickedCommand">
+            <summary>The backing field for <see cref="P:AlarmApp.ViewModel.TaskViewModel.EditButtonClickedCommand"/>.</summary>
+        </member>
+        <member name="P:AlarmApp.ViewModel.TaskViewModel.EditButtonClickedCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand`1"/> instance wrapping <see cref="M:AlarmApp.ViewModel.TaskViewModel.EditButtonClicked(AlarmApp.Model.MorningTask)"/>.</summary>
+        </member>
+        <member name="F:AlarmApp.ViewModel.TaskViewModel.refreshCommand">
+            <summary>The backing field for <see cref="P:AlarmApp.ViewModel.TaskViewModel.RefreshCommand"/>.</summary>
+        </member>
+        <member name="P:AlarmApp.ViewModel.TaskViewModel.RefreshCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:AlarmApp.ViewModel.TaskViewModel.Refresh"/>.</summary>
+        </member>
+    </members>
+</doc>
